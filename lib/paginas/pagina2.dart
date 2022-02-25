@@ -12,7 +12,7 @@ class _Pagina2State extends State<Pagina2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pagina 1'),
+        title: const Text('Pagina 2'),
       ),
       body: Center(
         child: Column(
