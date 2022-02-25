@@ -27,7 +27,7 @@ class _MenuState extends State<Menu> {
               onPressed: () {
                 Get.toNamed("/pagina1/");
               },
-              child: const Text('Pagina 1'),
+              child: const Text('SQLite - SQFlite 1'),
             ),
             const SizedBox(
               height: 35,
@@ -37,7 +37,7 @@ class _MenuState extends State<Menu> {
               onPressed: () {
                 Get.toNamed("/pagina2/");
               },
-              child: const Text('Pagina 2'),
+              child: const Text('Show Material Banner'),
             ),
             const SizedBox(
               height: 35,
