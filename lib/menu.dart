@@ -20,7 +20,7 @@ class _MenuState extends State<Menu> {
         child: Column(
           children: [
             const SizedBox(
-              height: 65,
+              height: 85,
             ),
             ElevatedButton(
               style: elevatedEstilo,
@@ -30,7 +30,7 @@ class _MenuState extends State<Menu> {
               child: const Text('Pagina 1'),
             ),
             const SizedBox(
-              height: 65,
+              height: 35,
             ),
             ElevatedButton(
               style: elevatedEstilo,
@@ -40,7 +40,7 @@ class _MenuState extends State<Menu> {
               child: const Text('Pagina 2'),
             ),
             const SizedBox(
-              height: 65,
+              height: 35,
             ),
             ElevatedButton(
               style: elevatedEstilo,

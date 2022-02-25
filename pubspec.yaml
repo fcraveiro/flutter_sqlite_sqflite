@@ -1,6 +1,5 @@
 name: flutter_sqlite_sqflite
 
-
 description: A new Flutter project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -11,18 +10,18 @@ environment:
   sdk: ">=2.16.1 <3.0.0"
 
 dependencies:
+  cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  flutter_localizations:                # Importante  
+  flutter_localizations:
     sdk: flutter
-  font_awesome_flutter: ^9.2.0          # Basico
-  get: ^4.6.1                           # Basico
-  get_storage: ^2.0.3                   # Basico
-  google_fonts: ^2.2.0                  # Basico
-  cupertino_icons: ^1.0.2           
-  
-dev_dependencies:
+  font_awesome_flutter: ^9.2.0
+  get: ^4.6.1
+  get_storage: ^2.0.3
+  google_fonts: ^2.2.0
+  sqflite: ^2.0.2
 
+dev_dependencies:
   flutter_lints: ^1.0.0
   flutter_test:
     sdk: flutter
