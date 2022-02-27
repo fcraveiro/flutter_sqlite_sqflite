@@ -4,6 +4,8 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../services/constants.dart';
+
 class Pagina1 extends StatefulWidget {
   const Pagina1({Key? key}) : super(key: key);
 
@@ -17,71 +19,69 @@ class _Pagina1State extends State<Pagina1> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: TextField(
-            controller: textController,
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: TextField(
+          controller: textController,
         ),
-        body: Center(
-          child: FutureBuilder<List<Grocery>>(
-              future: DatabaseHelper.instance.getGroceries(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<Grocery>> snapshot) {
-                if (!snapshot.hasData) {
-                  return const Center(child: Text('Loading...'));
-                }
-                return snapshot.data!.isEmpty
-                    ? const Center(child: Text('No Groceries in List.'))
-                    : ListView(
-                        children: snapshot.data!.map((grocery) {
-                          return Center(
-                            child: Card(
-                              color: selectedId == grocery.id
-                                  ? Colors.white70
-                                  : Colors.white,
-                              child: ListTile(
-                                title: Text(grocery.name),
-                                onTap: () {
-                                  setState(() {
-                                    if (selectedId == null) {
-                                      textController.text = grocery.name;
-                                      selectedId = grocery.id;
-                                    } else {
-                                      textController.text = '';
-                                      selectedId = null;
-                                    }
-                                  });
-                                },
-                                onLongPress: () {
-                                  setState(() {
-                                    DatabaseHelper.instance.remove(grocery.id!);
-                                  });
-                                },
-                              ),
+        centerTitle: true,
+        backgroundColor: const Color(0xFF48426D),
+      ),
+      body: Center(
+        child: FutureBuilder<List<Grocery>>(
+            future: DatabaseHelper.instance.getGroceries(),
+            builder:
+                (BuildContext context, AsyncSnapshot<List<Grocery>> snapshot) {
+              if (!snapshot.hasData) {
+                return const Center(child: Text('Loading...'));
+              }
+              return snapshot.data!.isEmpty
+                  ? const Center(child: Text('No Groceries in List.'))
+                  : ListView(
+                      children: snapshot.data!.map((grocery) {
+                        return Center(
+                          child: Card(
+                            color: selectedId == grocery.id ? bgColor : bgColor,
+                            child: ListTile(
+                              title: Text(grocery.name),
+                              onTap: () {
+                                setState(() {
+                                  if (selectedId == null) {
+                                    textController.text = grocery.name;
+                                    selectedId = grocery.id;
+                                  } else {
+                                    textController.text = '';
+                                    selectedId = null;
+                                  }
+                                });
+                              },
+                              onLongPress: () {
+                                setState(() {
+                                  DatabaseHelper.instance.remove(grocery.id!);
+                                });
+                              },
                             ),
-                          );
-                        }).toList(),
-                      );
-              }),
-        ),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.save),
-          onPressed: () async {
-            selectedId != null
-                ? await DatabaseHelper.instance.update(
-                    Grocery(id: selectedId, name: textController.text),
-                  )
-                : await DatabaseHelper.instance.add(
-                    Grocery(name: textController.text),
-                  );
-            setState(() {
-              textController.clear();
-              selectedId = null;
-            });
-          },
-        ),
+                          ),
+                        );
+                      }).toList(),
+                    );
+            }),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.save),
+        onPressed: () async {
+          selectedId != null
+              ? await DatabaseHelper.instance.update(
+                  Grocery(id: selectedId, name: textController.text),
+                )
+              : await DatabaseHelper.instance.add(
+                  Grocery(name: textController.text),
+                );
+          setState(() {
+            textController.clear();
+            selectedId = null;
+          });
+        },
       ),
     );
   }

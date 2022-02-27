@@ -35,9 +35,9 @@ class _MenuState extends State<Menu> {
             ElevatedButton(
               style: elevatedEstilo,
               onPressed: () {
-                Get.toNamed("/pagina2/");
+                Get.toNamed("/pagina3/");
               },
-              child: const Text('Show Material Banner'),
+              child: const Text('SQLite - SQFlite 2'),
             ),
             const SizedBox(
               height: 35,
@@ -45,9 +45,9 @@ class _MenuState extends State<Menu> {
             ElevatedButton(
               style: elevatedEstilo,
               onPressed: () {
-                Get.toNamed("/pagina3/");
+                Get.toNamed("/pagina2/");
               },
-              child: const Text('Pagina 3'),
+              child: const Text('Show Material Banner'),
             ),
           ],
         ),

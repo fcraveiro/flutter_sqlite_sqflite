@@ -1,5 +1,6 @@
+import 'package:flutter_sqlite_sqflite/paginas/pagina3/notes_page.dart';
+
 import '/paginas/pagina2.dart';
-import '/paginas/pagina3.dart';
 import '/paginas/pagina1.dart';
 import 'package:get/get.dart';
 import '/menu.dart';

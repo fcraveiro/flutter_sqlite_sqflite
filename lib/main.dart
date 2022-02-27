@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_sqlite_sqflite/menu.dart';
 import '/services/constants.dart';
 import '/services/rotas.dart';
@@ -9,6 +10,10 @@ import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   await GetStorage.init();
   runApp(const MyApp());
 }
